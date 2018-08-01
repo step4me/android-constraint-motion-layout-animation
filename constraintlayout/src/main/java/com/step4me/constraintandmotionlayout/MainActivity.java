@@ -11,6 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ConstraintLayout constraintLayout;
     private ConstraintSet applyConstraintSet = new ConstraintSet();
+    private ConstraintSet secondConstraintSet = new ConstraintSet();
     private ConstraintSet resetConstraintSet = new ConstraintSet();
 
     @Override
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         constraintLayout = findViewById(R.id.constraint_layout);
         applyConstraintSet.clone(constraintLayout);
+        secondConstraintSet.clone(this, R.layout.second_frame);
         resetConstraintSet.clone(constraintLayout);
     }
 
@@ -29,6 +31,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void onAnimateChainClick(View view) {
         animateChainStyle();
+    }
+
+    /**
+     * animateExpandImageView() 과 같은 결과를 나타낸다
+     * @param view
+     */
+    public void onAnimateKeyframeClick(View view) {
+        animateKeyframe();
     }
 
     public void onResetClick(View view) {
@@ -90,5 +100,11 @@ public class MainActivity extends AppCompatActivity {
                 new int[]{R.id.iv_thumnail, R.id.tv_description}, null, ConstraintSet.CHAIN_PACKED);
 
         applyConstraintSet.applyTo(constraintLayout);
+    }
+
+    private void animateKeyframe() {
+
+        TransitionManager.beginDelayedTransition(constraintLayout);
+        secondConstraintSet.applyTo(constraintLayout);
     }
 }

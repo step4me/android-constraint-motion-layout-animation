@@ -23,26 +23,27 @@
 
     <ImageView
         android:id="@+id/iv_thumnail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:src="@mipmap/ic_launcher"
+        android:layout_marginTop="20dp"
         app:layout_constraintLeft_toLeftOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/tv_description"
-        app:layout_constraintBottom_toTopOf="@+id/animate_expand"
-        app:layout_constraintVertical_bias="0.4"/>
+        app:layout_constraintRight_toRightOf="@+id/guideline_right"
+        app:layout_constraintBottom_toTopOf="@+id/tv_description"
+        app:layout_constraintVertical_weight="4"/>
 
     <TextView
         android:id="@+id/tv_description"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:text="가나다라마바사아자차카타파하가나다라마바사아자차카타파하"
-        android:layout_marginLeft="20dp"
-        app:layout_constraintLeft_toRightOf="@+id/iv_thumnail"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline_left"
         app:layout_constraintRight_toRightOf="@+id/guideline_right"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_thumnail"
         app:layout_constraintBottom_toTopOf="@+id/animate_expand"
-        app:layout_constraintVertical_bias="0.4"/>
+        app:layout_constraintVertical_weight="1"/>
 
 
     <Button
