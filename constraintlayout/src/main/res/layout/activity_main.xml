@@ -29,7 +29,7 @@
         app:layout_constraintLeft_toLeftOf="@+id/guideline_left"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/tv_description"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/animate_expand"
         app:layout_constraintVertical_bias="0.4"/>
 
     <TextView
@@ -41,29 +41,49 @@
         app:layout_constraintLeft_toRightOf="@+id/iv_thumnail"
         app:layout_constraintRight_toRightOf="@+id/guideline_right"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/animate_expand"
         app:layout_constraintVertical_bias="0.4"/>
 
 
     <Button
-        android:id="@+id/apply_button"
+        android:id="@+id/animate_expand"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:onClick="onApplyClick"
-        android:text="Apply"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/reset_button" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="onAnimateExpandClick"
+        android:text="Animate Expand"
+        app:layout_constraintBottom_toTopOf="@+id/reset_button"
+        app:layout_constraintEnd_toStartOf="@+id/animate_chain"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Button
+        android:id="@+id/animate_chain"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="onAnimateChainClick"
+        android:text="Animate Chain Style"
+        app:layout_constraintBottom_toTopOf="@+id/reset_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/animate_expand" />
 
 
     <Button
         android:id="@+id/reset_button"
         android:layout_width="0dp"
         android:layout_height="60dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:onClick="onResetClick"
         android:text="Reset"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/apply_button"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>

@@ -23,8 +23,12 @@ public class MainActivity extends AppCompatActivity {
         resetConstraintSet.clone(constraintLayout);
     }
 
-    public void onApplyClick(View view) {
+    public void onAnimateExpandClick(View view) {
         animateExpandImageView();
+    }
+
+    public void onAnimateChainClick(View view) {
+        animateChainStyle();
     }
 
     public void onResetClick(View view) {
@@ -58,11 +62,33 @@ public class MainActivity extends AppCompatActivity {
         applyConstraintSet.connect(R.id.tv_description, ConstraintSet.RIGHT,
                 ConstraintSet.PARENT_ID, ConstraintSet.RIGHT);
         applyConstraintSet.connect(R.id.tv_description, ConstraintSet.BOTTOM,
-                ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM);
-        applyConstraintSet.centerHorizontally(R.id.tv_description, R.id.constraint_layout);
+                R.id.animate_expand, ConstraintSet.TOP);
+        applyConstraintSet.centerHorizontally(R.id.tv_description, ConstraintSet.PARENT_ID);
         applyConstraintSet.constrainWidth(R.id.tv_description, ConstraintSet.WRAP_CONTENT);
         applyConstraintSet.constrainHeight(R.id.tv_description, ConstraintSet.MATCH_CONSTRAINT);
         applyConstraintSet.setVerticalWeight(R.id.tv_description, 1);
+        applyConstraintSet.applyTo(constraintLayout);
+    }
+
+    private void animateChainStyle() {
+
+        TransitionManager.beginDelayedTransition(constraintLayout);
+
+        applyConstraintSet.clear(R.id.iv_thumnail);
+        applyConstraintSet.clear(R.id.tv_description);
+
+
+        applyConstraintSet.connect(R.id.iv_thumnail, ConstraintSet.LEFT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT);
+        applyConstraintSet.connect(R.id.tv_description, ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.RIGHT);
+
+        // chain
+        applyConstraintSet.connect(R.id.iv_thumnail, ConstraintSet.RIGHT, R.id.tv_description, ConstraintSet.LEFT);
+        applyConstraintSet.connect(R.id.tv_description, ConstraintSet.LEFT, R.id.iv_thumnail, ConstraintSet.RIGHT);
+
+        // int leftId, int leftSide, int rightId, int rightSide, int[] chainIds, float[] weights, int style
+        applyConstraintSet.createHorizontalChain(ConstraintSet.PARENT_ID, ConstraintSet.RIGHT, ConstraintSet.PARENT_ID, ConstraintSet.LEFT,
+                new int[]{R.id.iv_thumnail, R.id.tv_description}, null, ConstraintSet.CHAIN_PACKED);
+
         applyConstraintSet.applyTo(constraintLayout);
     }
 }
