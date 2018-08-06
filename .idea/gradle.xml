@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/constraintlayout" />
+            <option value="$PROJECT_DIR$/motionlayout" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
